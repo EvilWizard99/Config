@@ -1,0 +1,24 @@
+{
+    "name": "ewc/config",
+    "description": "Config parsers for use in applications.",
+    "keywords": ["EWC", "Config", "Parsers", "YAML", "BaSH"],
+    "license": "0BSD",
+	"readme": "Readme.md",
+    "authors": [
+        {
+            "name": "Evil Wizard",
+            "email": "evil.wizard95@googlemail.com"
+        }
+    ],
+    "type": "project",
+    "require": {
+		"php": ">=5.5",
+		"ewc/commons": "1.0.*"
+    },
+	"require-dev": {},
+	"autoload": {
+        "psr-4": {
+            "EWC\\Config\\": "src/"
+        }
+    }
+}

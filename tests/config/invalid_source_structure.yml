@@ -1,0 +1,47 @@
+app:
+    site_name: Evil Wizard Creations
+    banner: 8c4e2bc202828b3420ad9d9e06e29227.gif
+    version: 1
+    env: local
+    plugins:
+        ContentFilter:
+        Emojis: {
+            class: EWC\WebServices\Plugins\Basic\Utilities\Emojis,
+            args: [
+                Core\View,
+                /images/guestbook
+            ]
+        }
+        BBCode: {
+            class: EWC\WebServices\Plugins\Basic\Utilities\BBCode,
+            args: [Core\View],
+			resources: {
+				css: [
+
+                ],
+				js: [
+
+				]
+            }
+        }
+    error:
+        controller: error
+    security:
+        salt: ewc_salting
+    db: {
+		# the default connection alias
+		default_connection: main
+		# flag to indicate the MAMP socket config should be added to the PDO connection
+		use_mamp_sockets: false
+		# list of database connection alias names and connection specific config
+		connections: {
+			main: {
+				env: local
+				dsn: localhost
+				database: ewc
+				username: ewc_website_main
+				password: ewc_website_main
+			port: 3306
+            }
+        }
+    }
