@@ -7,6 +7,7 @@ use EWC\Config\Interfaces\IConfigParser;
 use EWC\Config\Interfaces\IConfigWrapper;
 use EWC\Config\Parsers\YAML;
 use EWC\Config\Parsers\Conf;
+use EWC\Config\Parsers\PHPArray;
 use EWC\Config\Exceptions\ConfigException;
 use EWC\Commons\Utilities\Reflector;
 use Exception;
@@ -23,8 +24,9 @@ use Exception;
  * @uses	FileSystem To verify the config source files exist.
  * @uses	IConfigParser To verify parser types.
  * @uses	IConfigWrapper To identify the parsed config as an interactive object.
- * @uses	YAML For a YAML config parser support.
- * @uses	Conf For a BaSH style conf config parser support.
+ * @uses	YAML For a YAML config file parser support.
+ * @uses	Conf For a BaSH style conf config file parser support.
+ * @uses	PHPArray For a PHP Array config file parser support.
  * @uses	ConfigException Catches and throws named exceptions.
  * @uses	Reflector Dynamically use config parsers.
  * @uses	Exception To catch multiple named exceptions.
@@ -40,6 +42,11 @@ class Parser {
 	 * @var	String The BaSH style conf config parser type.
 	 */
 	const TYPE_CONF = "CONF";
+		
+	/**
+	 * @var	String The PHP array config parser type.
+	 */
+	const TYPE_PHP_ARRAY = "PHP_ARRAY";
 	
 	/**
 	 * @var	Parser The Config Parser object singleton instance reference.
@@ -106,6 +113,9 @@ class Parser {
 			break;
 			case static::TYPE_CONF:
 				$parser_classname = Conf::class;
+			break;
+			case static::TYPE_PHP_ARRAY:
+				$parser_classname = PHPArray::class;
 			break;
 			default:
 				// throw unknown config parser type exception
