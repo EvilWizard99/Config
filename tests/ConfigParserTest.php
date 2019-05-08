@@ -4,7 +4,7 @@ use EWC\Commons\Traits\TErrors;
 use EWC\Commons\Utilities\ErrorLogData;
 use EWC\Config\Parser;
 use EWC\Config\Exceptions\ConfigException;
-use Exception;
+//use Exception;
 
 /**
  * Class Config Parser Test
