@@ -13,7 +13,7 @@
     "type": "project",
     "require": {
 		"php": ">=5.5",
-		"ewc/commons": "dev-master#1.0.*"
+		"ewc/commons": "1.0.*"
     },
 	"require-dev": {
         "phpunit/phpunit": "^4.8",
@@ -31,7 +31,8 @@
     },
 	"autoload-dev": {
         "psr-4": {
-            "EWC\\Config\\Tests\\": "tests/"
+            "EWC\\Config\\Tests\\": "tests/",
+            "EWC\\Config\\Examples\\": "examples/"
         }
     }
 }
