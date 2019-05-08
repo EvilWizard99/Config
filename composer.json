@@ -1,7 +1,7 @@
 {
     "name": "ewc/config",
     "description": "Config parsers for use in applications.",
-    "keywords": ["EWC", "Config", "Parsers", "YAML", "BaSH"],
+    "keywords": ["EWC", "Config", "Parsers", "YAML", "BaSH", "PHP", "JSON"],
     "license": "0BSD",
 	"readme": "Readme.md",
     "authors": [
