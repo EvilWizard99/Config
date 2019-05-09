@@ -1,6 +1,6 @@
 {
     "name": "ewc/config",
-    "description": "Config parsers for use in applications.",
+    "description": "Parse configuration options from multiple source types into a single interactive config object.",
     "keywords": ["EWC", "Config", "Parsers", "YAML", "BaSH", "PHP", "JSON", "CLI"],
     "license": "0BSD",
 	"readme": "Readme.md",
