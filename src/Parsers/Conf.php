@@ -155,7 +155,7 @@ class Conf extends AParser {
 					: $include_file
 				);
 		// parse the included config file
-		$included = Parser::load($file, $parser_type);
+		$included = Parser::load($parser_type, $file);
 		if($this->if_module) {
 		// include this config inside the module group section
 			$merge_to = &$this->parsed_config[$this->if_module_group];
