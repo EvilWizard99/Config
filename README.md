@@ -11,6 +11,7 @@ Features
 * BaSH style conf file parsing
 * PHP Array style config file parsing
 * JSON config file parsing
+* Command Line Interface config parsing
 * PSR-4 autoloading compliant structure
 * Comprehensive Guides and tutorial
 * Easy to use to any framework or even a plain php file
