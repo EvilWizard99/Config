@@ -1,7 +1,7 @@
 Evil Wizard Creations Config
 =========================
 
-Config parsers for use in applications.
+Parse configuration options from multiple source types into a single interactive config object.
 
 Features
 --------
@@ -19,7 +19,9 @@ Features
 ToDo
 --------
 
+- [ ] **Examples** - *Write examples and implementations for parser use cases.*
 - [ ] **Tests** - *Write more tests for all parsers.*
 - [ ] **Config** - *Update the parser to use the scope functionality of Config.*
+- [ ] **Command Line Interface Parser** - *Add ability to load additional configuration via CLI switch.*
 - [ ] **Parser** - *Create a INI file config parser.*
 
