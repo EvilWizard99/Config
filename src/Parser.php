@@ -101,7 +101,7 @@ class Parser {
 	 */
 	public static function load($parser_type, $config_file=NULL) {
 		// verify the source file exists and is readable
-		if(!is_null($config_file) && !FileSystem::fileExists($config_file)) { throw ConfigException::withfailedToLoadConfigSource($config_file); }
+		if(!is_null($config_file) && !FileSystem::fileExists($config_file)) { throw ConfigException::withfailedToLoadConfigSource($config_file, $parser_type); }
 		// hash the path to identify the config object
 		$hash = md5($config_file);
 		if(!array_key_exists($hash, static::$loaded_configs)) {
