@@ -19,7 +19,7 @@ use Exception;
  * 
  * Act as a factory to parse config files into usable objects.
  *
- * @version 1.0.0
+ * @version 1.1.0
  * @author Russell Nash <evil.wizard95@googlemail.com>
  * @copyright 2019 Evil Wizard Creation.
  * 

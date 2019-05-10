@@ -13,7 +13,7 @@ use EWC\Commons\Libraries\FileSystem;
  * 
  * Parse and load BaSH Conf style config file into an interactive object.
  *
- * @version 1.0.0
+ * @version 1.1.0
  * @author Russell Nash <evil.wizard95@googlemail.com>
  * @copyright 2019 Evil Wizard Creation.
  * 

@@ -7,6 +7,7 @@ Features
 --------
 
 * Config object wrapping and default value access support
+* Import config with over loading
 * YAML config file parsing
 * BaSH style conf file parsing
 * PHP Array style config file parsing

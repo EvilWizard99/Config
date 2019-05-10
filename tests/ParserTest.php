@@ -78,5 +78,19 @@ class ParserTest extends PHPUnit_Framework_TestCase {
 		$this->assertCount(3, $var->get("php.array"), "PHP Config Array length mismatch");
 		unset($var);
 	}
+	
+	/**
+	 * Make ConfigWrapper imports additional config 
+	 */
+	public function testConfigWrapperImportsConfigCorrectly() {
+		$var = Parser::load(Parser::TYPE_YAML, dirname(__FILE__) . "/config/valid_source_structure.yml");
+		$this->assertInstanceOf(ConfigWrapper::class, $var, "Expected an instance of ConfigWrapper");
+		$this->assertInstanceOf(ConfigWrapper::class, $var, $var->importConfig(Parser::load(Parser::TYPE_JSON, dirname(__FILE__) . "/config/valid_source_structure.json")), "Expected an instance of ConfigWrapper");
+		$this->assertEquals("Evil_Wizard", $var->get("yml.string"), "Source YAML Config string mismatch");
+		$this->assertCount(3, $var->get("yml.array"), "Source YAML Config Array length mismatch");
+		$this->assertEquals("Evil_Wizard", $var->get("json.string"), "Imported JSON Config name string mismatch");
+		$this->assertCount(3, $var->get("json.array"), "Imported JSON Config Array length mismatch");
+		unset($var);
+	}
   
 }
