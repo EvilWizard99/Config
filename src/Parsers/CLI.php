@@ -71,7 +71,7 @@ class CLI extends AParser {
 		} elseif(preg_match("#-[a-zA-Z0-9]#", $argument)) {
 		// matches -option-name
 		// argument is a boolean flag switch
-			$argument_name = preg_replace("#-#", '', $argument);
+			$argument_name = preg_replace("#-#", '', $argument, 1);
 			$this->parsed_config[$argument_name] = TRUE;
 		}
 	}

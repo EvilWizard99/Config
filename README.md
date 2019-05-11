@@ -17,12 +17,20 @@ Features
 * Comprehensive Guides and tutorial
 * Easy to use to any framework or even a plain php file
 
+Bugs
+--------
+
+No known bugs as yet.
+
+
 ToDo
 --------
 
-- [ ] **Examples** - *Write examples and implementations for parser use cases.*
-- [ ] **Tests** - *Write more tests for all parsers.*
 - [ ] **Config** - *Update the parser to use the scope functionality of Config.*
 - [ ] **Command Line Interface Parser** - *Add ability to load additional configuration via CLI switch.*
+- [ ] **YAML Parser** - *Add ability to load additional configuration via callback function.*
+- [ ] **JSON Parser** - *Add ability to load additional configuration via callback function.*
 - [ ] **Parser** - *Create a INI file config parser.*
+- [ ] **Examples** - *Write examples and implementations for parser use cases.*
+- [ ] **Tests** - *Write more tests for all parsers.*
 
