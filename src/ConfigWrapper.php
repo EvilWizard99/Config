@@ -5,7 +5,7 @@ namespace EWC\Config;
 use EWC\Config\Interfaces\IConfigWrapper;
 use EWC\Commons\Utilities\MetaData;
 use EWC\Commons\Exceptions\MetadataTraitException;
-use EWC\Commons\Exceptions\ConfigException;
+use EWC\Config\Exceptions\ConfigException;
 
 /**
  * Class ConfigWrapper

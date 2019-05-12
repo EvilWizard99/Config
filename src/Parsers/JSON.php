@@ -3,7 +3,6 @@
 namespace EWC\Config\Parsers;
 
 use EWC\Config\Parser;
-use EWC\Config\Exceptions\ConfigException;
 use EWC\Config\Exceptions\ConfigParserException;
 
 /**
@@ -47,8 +46,8 @@ class JSON extends AParser {
 		// load and parse the config file
 		$this->parsed_config = file_get_contents($this->config_source_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 		if(!$this->parsed_config) {
-		// invalid PHP Array content
-			throw new ConfigParserException("Failed to load file content from [{$this->config_source_file}]", ConfigException::FAILED_TO_LOAD_CONFIG_SOURCE);
+		// invalid JSON content
+			throw ConfigParserException::withFailedToParseConfigSource($this->config_source_file, static::getParserType());
 		}
 	}
 

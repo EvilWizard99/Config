@@ -3,7 +3,6 @@
 namespace EWC\Config\Parsers;
 
 use EWC\Config\Parser;
-use EWC\Config\Exceptions\ConfigException;
 use EWC\Config\Exceptions\ConfigParserException;
 
 /**
@@ -17,7 +16,6 @@ use EWC\Config\Exceptions\ConfigParserException;
  * 
  * @uses	AParser as a base for parsing config.
  * @uses	Parser For constants definition.
- * @uses	ConfigException For constants definition.
  * @uses	ConfigParserException Catches and throws named exceptions.
  */
 class PHPArray extends AParser {
@@ -48,7 +46,7 @@ class PHPArray extends AParser {
 		$this->parsed_config = include $this->config_source_file;
 		if(!$this->parsed_config) {
 		// invalid PHP Array content
-			throw new ConfigParserException("Invalid PHP source array content in [{$this->config_source_file}]", ConfigException::FAILED_TO_LOAD_CONFIG_SOURCE);
+			throw ConfigParserException::withFailedToParseConfigSource($this->config_source_file, static::getParserType());
 		}
 	}
 

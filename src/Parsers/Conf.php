@@ -221,7 +221,7 @@ class Conf extends AParser {
 			$is_comment = TRUE;
 		} else {
 			// check if we have been in a comment block and its closing
-			if($this->comment_block && (preg_match("/^(*\/)(.*)/", $line) == 1)) {
+			if($this->comment_block && (preg_match("/^(\*\/)(.*)/", $line) == 1)) {
 				// comment block is ending, but is still a comment line though
 				$this->comment_block = FALSE;
 				$is_comment = TRUE;
