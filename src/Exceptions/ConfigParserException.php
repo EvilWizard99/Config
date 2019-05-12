@@ -25,7 +25,7 @@ class ConfigParserException extends ConfigException {
 	 * @param	Integer $code An error code for the exception.
 	 * @param	Exception $previous An optional previously thrown exception.
 	 */
-    public function __construct($message, $code=ConfigParserException::CODE_GENERAL, Exception $previous=NULL)  {
+    public function __construct($message, $code=ConfigParserException::GENERAL, Exception $previous=NULL)  {
         parent::__construct($message, $code, $previous);
     }
 }
