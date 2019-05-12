@@ -7,9 +7,9 @@ use EWC\Config\Exceptions\ConfigException;
 use EWC\Config\Exceptions\ConfigParserException;
 
 /**
- * Class PHP Array Config Parser
+ * Class JSON Encoded Config Parser
  * 
- * Parse and load PHP Array config file into an interactive object.
+ * Parse and load JSON encoded config file into an interactive object.
  *
  * @version 1.0.0
  * @author Russell Nash <evil.wizard95@googlemail.com>

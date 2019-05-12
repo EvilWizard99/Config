@@ -1,7 +1,7 @@
 {
     "name": "ewc/config",
-    "description": "Config parsers for use in applications.",
-    "keywords": ["EWC", "Config", "Parsers", "YAML", "BaSH", "PHP", "JSON"],
+    "description": "Parse configuration options from multiple source types into a single interactive config object.",
+    "keywords": ["EWC", "Config", "Parsers", "YAML", "BaSH", "PHP", "JSON", "CLI"],
     "license": "0BSD",
 	"readme": "Readme.md",
     "authors": [
@@ -21,7 +21,7 @@
     },
 	"extra": {
         "branch-alias": {
-            "dev-master": "1.0.*-dev"
+            "dev-master": "1.1.*-dev"
         }
     },
 	"autoload": {

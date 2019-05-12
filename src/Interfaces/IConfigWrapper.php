@@ -7,7 +7,7 @@ use EWC\Config\Exceptions\ConfigException;
 /**
  * Interface IConfigWrapper
  * 
- * @version 1.0.0
+ * @version 1.1.0
  * @author Russell Nash <evil.wizard95@googlemail.com>
  * @copyright 2019 Evil Wizard Creation.
  * 
@@ -25,6 +25,15 @@ interface IConfigWrapper extends IConfigExposure {
 	 * @throws	ConfigException If the metadata has already been set, the source is not an array or a valid JSON String.
 	 */
 	public static function create($source, $config_file, $parser_type);
+	
+	/**
+	 * Import another config.
+	 * 
+	 * @param	IConfigWrapper $config An already loaded and parsed config.
+	 * @return	ConfigWrapper The source as interactive metadata.
+	 * @throws	ConfigException If the source is not an array or a valid JSON String.
+	 */
+	public function importConfig(IConfigWrapper $config);	
 	
 	/**
 	 * Check if the config has the specified setting path.

@@ -13,7 +13,7 @@ use EWC\Commons\Libraries\FileSystem;
  * 
  * Parse and load BaSH Conf style config file into an interactive object.
  *
- * @version 1.0.0
+ * @version 1.1.0
  * @author Russell Nash <evil.wizard95@googlemail.com>
  * @copyright 2019 Evil Wizard Creation.
  * 
@@ -155,7 +155,7 @@ class Conf extends AParser {
 					: $include_file
 				);
 		// parse the included config file
-		$included = Parser::load($file, $parser_type);
+		$included = Parser::load($parser_type, $file);
 		if($this->if_module) {
 		// include this config inside the module group section
 			$merge_to = &$this->parsed_config[$this->if_module_group];

@@ -9,6 +9,7 @@ use EWC\Config\Parsers\YAML;
 use EWC\Config\Parsers\Conf;
 use EWC\Config\Parsers\PHPArray;
 use EWC\Config\Parsers\JSON;
+use EWC\Config\Parsers\CLI;
 use EWC\Config\Exceptions\ConfigException;
 use EWC\Commons\Utilities\Reflector;
 use Exception;
@@ -18,7 +19,7 @@ use Exception;
  * 
  * Act as a factory to parse config files into usable objects.
  *
- * @version 1.0.0
+ * @version 1.1.0
  * @author Russell Nash <evil.wizard95@googlemail.com>
  * @copyright 2019 Evil Wizard Creation.
  * 
@@ -54,6 +55,11 @@ class Parser {
 	 * @var	String The JSON file config parser type.
 	 */
 	const TYPE_JSON = "JSON";
+		
+	/**
+	 * @var	String The Command Line Interface Argument config parser type.
+	 */
+	const TYPE_CLI = "CLI";
 	
 	/**
 	 * @var	Parser The Config Parser object singleton instance reference.
@@ -86,51 +92,64 @@ class Parser {
 	/**
 	 * Load, parse and return the requested config.
 	 * 
-	 * @param	String $config_file The full path to the config file to load and parse.
 	 * @param	String $parser_type The config parser type to load the config.
+	 * @param	String $config_file Optional full path to a config file to load and parse.
 	 * @return	IConfigWrapper The loaded config as in interactively wrapped object.
+	 * @throws	ConfigException If the specified config file does not exist.
+	 * @throws	ConfigException If the config parser type is unknown.
 	 * @throws	ConfigException If the config can not be loaded and parsed.
 	 */
-	public static function load($config_file, $parser_type) {
+	public static function load($parser_type, $config_file=NULL) {
+		// verify the source file exists and is readable
+		if(!is_null($config_file) && !FileSystem::fileExists($config_file)) { throw ConfigException::withfailedToLoadConfigSource($config_file, $parser_type); }
 		// hash the path to identify the config object
 		$hash = md5($config_file);
 		if(!array_key_exists($hash, static::$loaded_configs)) {
 		// config object needs to be parsed & loaded
-			static::cacheConfig($config_file, $parser_type, $hash);
+			static::cacheConfig($parser_type, $config_file, $hash);
 		}
 		// return the loaded config object
 		return static::$loaded_configs[$hash];
 	}
 	
 	/**
-	 * Load, parse and cache the requested config.
+	 * Get the config parser for the config type.
 	 * 
-	 * @param	String $config_file The full path to the config file to load and parse.
 	 * @param	String $parser_type The config parser type to load the config.
-	 * @param	String $hash A hash to identify the config in the cache.
-	 * @throws	ConfigException If the config can not be loaded and parsed.
+	 * @return	IConfigParser The config parser.
+	 * @throws	ConfigException If the config parser type is unknown.
 	 */
-	private static function cacheConfig($config_file, $parser_type, $hash) {
-		// verify the source file exists and is readable
-		if(!FileSystem::fileExists($config_file)) { throw ConfigException::withfailedToLoadConfigSource($config_file); }
+	protected static function getParser($parser_type) {
 		switch (strtoupper($parser_type)) {
 		// determine which parser to use
 			case static::TYPE_YAML:
-				$parser_classname = YAML::class;
-			break;
+				return YAML::class;
 			case static::TYPE_CONF:
-				$parser_classname = Conf::class;
-			break;
+				return Conf::class;
 			case static::TYPE_PHP_ARRAY:
-				$parser_classname = PHPArray::class;
-			break;
+				return PHPArray::class;
 			case static::TYPE_JSON:
-				$parser_classname = JSON::class;
-			break;
+				return JSON::class;
+			case static::TYPE_CLI:
+				return CLI::class;
 			default:
 				// throw unknown config parser type exception
 				throw ConfigException::withUnknownParserType($parser_type);
 		}
+		
+	}
+	
+	/**
+	 * Load, parse and cache the requested config.
+	 * 
+	 * @param	String $parser_type The config parser type to load the config.
+	 * @param	String $config_file The full path to the config file to load and parse.
+	 * @param	String $hash A hash to identify the config in the cache.
+	 * @throws	ConfigException If the config parser type is unknown.
+	 * @throws	ConfigException If the config can not be loaded and parsed.
+	 */
+	private static function cacheConfig($parser_type, $config_file, $hash) {
+		$parser_classname = static::getParser($parser_type);
 		try {
 			// get a reflection of the parser
 			$parser = new Reflector($parser_classname, [$config_file]);
