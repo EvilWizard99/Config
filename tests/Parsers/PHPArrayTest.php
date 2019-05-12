@@ -30,5 +30,23 @@ class PHPArrayTest extends PHPUnit_Framework_TestCase {
 		$this->assertCount(3, $var->get("php.array"), "PHP Array Array length mismatch");
 		unset($var);
 	}
+	
+	/**
+	 * Make sure config failed to parse throws expected exception.
+	 * 
+	 * @expectedException \EWC\Config\Exceptions\ConfigException
+	 */
+	public function testConfigFailedToParseThrowsExceptionWithFailedToParseConfigSource() {
+		PHPArray::loadConfig(dirname(__FILE__) . "/../config/invalid_source_structure.php");
+	}
+	
+	/**
+	 * Make sure config failed to load throws expected exception.
+	 * 
+	 * @expectedException PHPUnit_Framework_Error
+	 */
+	public function testConfigFailedToLoadThrowsExceptionWithfailedToLoadConfigSource() {
+		PHPArray::loadConfig(dirname(__FILE__) . "/../config/missing_source.php");
+	}
   
 }

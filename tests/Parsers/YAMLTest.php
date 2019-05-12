@@ -30,5 +30,23 @@ class YAMLTest extends PHPUnit_Framework_TestCase {
 		$this->assertCount(3, $var->get("yml.array"), "YAML Array length mismatch");
 		unset($var);
 	}
+	
+	/**
+	 * Make sure config failed to parse throws expected exception.
+	 * 
+	 * @expectedException PHPUnit_Framework_Error
+	 */
+	public function testConfigFailedToParseThrowsExceptionWithFailedToParseConfigSource() {
+		YAML::loadConfig(dirname(__FILE__) . "/../config/invalid_source_structure.yml");
+	}
+	
+	/**
+	 * Make sure config failed to load throws expected exception.
+	 * 
+	 * @expectedException PHPUnit_Framework_Error
+	 */
+	public function testConfigFailedToLoadThrowsExceptionWithfailedToLoadConfigSource() {
+		YAML::loadConfig(dirname(__FILE__) . "/../config/missing_source.yml");
+	}
   
 }

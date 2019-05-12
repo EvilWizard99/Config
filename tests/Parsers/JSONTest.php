@@ -30,5 +30,23 @@ class JSONTest extends PHPUnit_Framework_TestCase {
 		$this->assertCount(3, $var->get("json.array"), "JSON Array length mismatch");
 		unset($var);
 	}
+	
+	/**
+	 * Make sure config failed to parse throws expected exception.
+	 * 
+	 * @expectedException \EWC\Config\Exceptions\ConfigException
+	 */
+	public function testConfigFailedToParseThrowsExceptionWithFailedToParseConfigSource() {
+		JSON::loadConfig(dirname(__FILE__) . "/../config/invalid_source_structure.json");
+	}
+	
+	/**
+	 * Make sure config failed to load throws expected exception.
+	 * 
+	 * @expectedException PHPUnit_Framework_Error
+	 */
+	public function testConfigFailedToLoadThrowsExceptionWithfailedToLoadConfigSource() {
+		JSON::loadConfig(dirname(__FILE__) . "/../config/missing_source.json");
+	}
   
 }
