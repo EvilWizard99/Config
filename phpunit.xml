@@ -9,4 +9,24 @@
 					<directory>tests</directory>
 				</testsuite>
 			</testsuites>
+			<testsuites>
+				<testsuite name="Exceptions">
+					<directory>tests/Exceptions</directory>
+				</testsuite>
+			</testsuites>
+			<testsuites>
+				<testsuite name="Interfaces">
+					<directory>tests/Interfaces</directory>
+				</testsuite>
+			</testsuites>
+			<testsuites>
+				<testsuite name="Parsers">
+					<directory>tests/Parsers</directory>
+				</testsuite>
+			</testsuites>
+			<testsuites>
+				<testsuite name="Traits">
+					<directory>tests/Traits</directory>
+				</testsuite>
+			</testsuites>
 </phpunit>

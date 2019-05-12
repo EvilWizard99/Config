@@ -2,6 +2,7 @@
 
 namespace EWC\Config\Traits;
 
+use EWC\Commons\Traits\TErrors;
 use EWC\Config\Parser;
 use EWC\Config\Interfaces\IConfigWrapper;
 use EWC\Config\Exceptions\ConfigException;

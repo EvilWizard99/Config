@@ -20,12 +20,14 @@ Features
 Bugs
 --------
 
-No known bugs as yet.
+* **Command Line Interface Parser** - *Issue with hyphens in switch names 'switch-name' for both flags and value parameters.*
 
 
 ToDo
 --------
 
+- [ ] **Parser** - *Move the check for file existence to parser base.*
+- [ ] **AParser** - *Allow for validation of source existence in abstraction.*
 - [ ] **Config** - *Update the parser to use the scope functionality of Config.*
 - [ ] **Command Line Interface Parser** - *Add ability to load additional configuration via CLI switch.*
 - [ ] **YAML Parser** - *Add ability to load additional configuration via callback function.*

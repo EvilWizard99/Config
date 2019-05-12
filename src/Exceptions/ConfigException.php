@@ -61,7 +61,7 @@ class ConfigException extends RuntimeException {
 	 * @param	Integer $code An error code for the exception.
 	 * @param	Exception $previous An optional previously thrown exception.
 	 */
-    public function __construct($message, $code=ConfigException::CODE_GENERAL, Exception $previous=NULL)  {
+    public function __construct($message, $code=ConfigException::GENERAL, Exception $previous=NULL)  {
         parent::__construct($message, $code, $previous);
     }
 	
@@ -71,7 +71,7 @@ class ConfigException extends RuntimeException {
 	 * @return	ConfigException
 	 */
 	public static function withSectionAlreadyLoaded() {
-		return new static("Config setion already loaded", static::CONFIG_SECTION_ALREADY_LOADED);
+		return new static("Config setion already loaded.", static::CONFIG_SECTION_ALREADY_LOADED);
 	}
 	
 	/**
@@ -82,7 +82,7 @@ class ConfigException extends RuntimeException {
 	 * @param	Exception $previous The caught parsing exception exception.
 	 * @return	ConfigException
 	 */
-	public static function withfailedToLoadConfigSource($source_file, $parser_type, Exception $previous=NULL) {
+	public static function withFailedToLoadConfigSource($source_file, $parser_type, Exception $previous=NULL) {
 		return new static("Failed to load config source file [{$source_file}] using [{$parser_type}] parser.", static::INVALID_CONFIG_SOURCE, $previous);
 	}
 	
@@ -94,7 +94,7 @@ class ConfigException extends RuntimeException {
 	 * @param	Exception $previous The caught parsing exception exception.
 	 * @return	ConfigException
 	 */
-	public static function withfailedToParseConfigSource($source_file, $parser_type, Exception $previous) {
+	public static function withFailedToParseConfigSource($source_file, $parser_type, Exception $previous=NULL) {
 		return new static("Failed to parse config source file [{$source_file}] using [{$parser_type}] parser.", static::INVALID_CONFIG_SOURCE, $previous);
 	}
 	
